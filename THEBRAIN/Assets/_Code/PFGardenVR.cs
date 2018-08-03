@@ -54,7 +54,7 @@ namespace mattatz.ProceduralFlower.Demo {
 
 			var go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]) as GameObject;
 			go.transform.position = point;
-			go.transform.localScale = Vector3.one * Random.Range(0.4f, 0.5f);
+			go.transform.localScale = Vector3.one * Random.Range(0.2f, 1f);
 			go.transform.localRotation = Quaternion.LookRotation(Vector3.forward, normal);            
         }
 
@@ -93,12 +93,10 @@ namespace mattatz.ProceduralFlower.Demo {
 			var mesh = GetComponent<MeshFilter>().sharedMesh;
 			vertices = mesh.vertices;
 			triangles = mesh.triangles;
-
-            InvokeRepeating("Grow", 2, 0.5f);
 		}
 
         private void Right_PointerIn(object sender, PointerEventArgs e) {
-            throw new System.NotImplementedException();
+            
         }
 
         void CheckInit () {
