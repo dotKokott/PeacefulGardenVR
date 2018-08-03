@@ -8,6 +8,7 @@ public struct PointerEventArgs
     public uint flags;
     public float distance;
     public Transform target;
+    public Vector3 point;
 }
 
 public delegate void PointerEventHandler(object sender, PointerEventArgs e);
@@ -103,6 +104,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
             args.distance = 0f;
             args.flags = 0;
             args.target = previousContact;
+            args.point = Vector3.zero;
             OnPointerOut(args);
             previousContact = null;
         }
@@ -116,6 +118,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
             argsIn.distance = hit.distance;
             argsIn.flags = 0;
             argsIn.target = hit.transform;
+            argsIn.point = hit.point;
             OnPointerIn(argsIn);
             previousContact = hit.transform;
         }

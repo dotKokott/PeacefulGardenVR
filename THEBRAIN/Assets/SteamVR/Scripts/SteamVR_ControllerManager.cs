@@ -4,6 +4,7 @@
 //
 //=============================================================================
 
+using System.Collections;
 using UnityEngine;
 using Valve.VR;
 
@@ -68,6 +69,15 @@ public class SteamVR_ControllerManager : MonoBehaviour
 
 	void OnEnable()
 	{
+
+
+        StartCoroutine (OnEnableRoutine());
+	}
+
+    IEnumerator OnEnableRoutine()//ADD THIS COROUTINE FOR LEGACY BINDINGS WORKAROUND.
+    {
+        yield return new WaitForSeconds (1f);//THIS PAUSE MUST BE ADDED OR ELSE LEGACY BINDINGS MIGHT INTERFERE WITH CONTROLLERS GETTING INITIALIZED.
+ 
 		for (int i = 0; i < objects.Length; i++)
 		{
 			var obj = objects[i];
@@ -86,7 +96,7 @@ public class SteamVR_ControllerManager : MonoBehaviour
 		inputFocusAction.enabled = true;
 		deviceConnectedAction.enabled = true;
 		trackedDeviceRoleChangedAction.enabled = true;
-	}
+    }
 
 	void OnDisable()
 	{
