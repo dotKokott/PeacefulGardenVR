@@ -11,8 +11,10 @@ public class Seed : MonoBehaviour {
     private DoodleAnimator doodleAnimator;
 
     public bool Planted = false;
+    public bool Paused = true;
 
     public DoodleAnimationFile IdleAnimation;
+    
 
 	void Start () {
 	    gazeTracker = GetComponent<GazeTracker>();
@@ -22,43 +24,36 @@ public class Seed : MonoBehaviour {
 	}
 
     public void LookAtCamera() {
-         var v = transform.position - Camera.main.transform.position;
+         var v = transform.position - Manager._.hmd.position;
          v.y = 0;
          transform.rotation = Quaternion.LookRotation(v);
     }
-		
+	
+    
+
 	void Update () {    
         if(Planted) return;
 
-        if(Input.GetKeyDown(KeyCode.Space) && !doodleAnimator.Playing && !Planted) {
+        if((Input.GetKeyDown(KeyCode.Space) || gazeTracker.IsInGaze) && Paused && !Planted) {
             Debug.Log("Grow");
+            Paused = false;
             StartCoroutine(PlayUntilFinishAndReplace());
         }
 
-        if(Input.GetKeyDown(KeyCode.P) && !Planted) {
+        if((Input.GetKeyDown(KeyCode.P) || !gazeTracker.IsInGaze) && !Paused && !Planted) {
             Debug.Log("Pause");
+            Paused = true;
             StopAllCoroutines();
             doodleAnimator.Pause();
         }
-
-        //if(!gazeTracker.IsInGaze) {
-        //    Debug.Log("Pause");
-        //    doodleAnimator.Pause();
-        //}
-
-        //if(!Planted && gazeTracker.IsInGaze) {
-        //    Plant();
-        //}
-        
-        //if(ParentTracker != null && !Planted) {
-        //    transform.position = ParentTracker.transform.position;
-        //}
 	}
 
     public IEnumerator PlayUntilFinishAndReplace() {
         yield return doodleAnimator.PlayAndPauseAt(doodleAnimator.CurrentFrame, doodleAnimator.File.Length - 1);
 
         Planted = true;
+
+        GetComponent<Collider>().enabled = false;
 
         doodleAnimator.ChangeAnimation(IdleAnimation);
         doodleAnimator.Play();

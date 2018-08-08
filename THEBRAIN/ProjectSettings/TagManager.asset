@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Tracker
+  - Flower
   layers:
   - Default
   - TransparentFX
