@@ -17,7 +17,14 @@ public class Manager : MonoBehaviour {
 
     public GameObject[] Seeds;
     
+    public AudioClip[] SeedSounds;
+    public AudioClip[] GrowSounds;    
+
+    public AudioClip[] Chimes;
+
     public Transform hmd;
+
+
 
     private static Manager instance;
     public static Manager _ {
