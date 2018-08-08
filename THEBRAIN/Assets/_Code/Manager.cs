@@ -15,11 +15,24 @@ public class Manager : MonoBehaviour {
     public GameObject[] Controllers;
     public GameObject[] Trackers;
 
+    public GameObject Seed;
+    
+    private static Manager instance;
+    public static Manager _ {
+        get {           
+            return instance;
+        }
+    }
+
 	void Start () {
-	    XRSettings.eyeTextureResolutionScale = RenderScale;	
+        if(instance == null) {
+            instance = this;
+
+	        XRSettings.eyeTextureResolutionScale = RenderScale;	
         
-        Debug.Log("Setting Floor position");
-        Floor.position = new Vector3(Floor.position.x, FloorY, Floor.position.z);
+            Debug.Log("Setting Floor position");
+            Floor.position = new Vector3(Floor.position.x, FloorY, Floor.position.z);
+        }
 	}
 	
 	// Update is called once per frame

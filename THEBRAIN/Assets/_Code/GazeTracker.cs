@@ -6,6 +6,8 @@ public class GazeTracker : MonoBehaviour {
 
 	private Transform hmd;
 
+    public bool IsInGaze = false;
+
 	void Start () {
 		
 	}
@@ -14,18 +16,16 @@ public class GazeTracker : MonoBehaviour {
 	void Update () {
         assignHMD();
 		
+        IsInGaze = false;
+
         var ray = new Ray(hmd.transform.position, hmd.transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, float.MaxValue)) {
             if(hit.collider.gameObject == this.gameObject) {
-                Grow();
+                IsInGaze = true;
             }
         }
 	}
-
-    void Grow() {
-        transform.localScale += Vector3.up * Time.deltaTime;
-    }
 
     void assignHMD() {
         if(hmd != null) return;
