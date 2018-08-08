@@ -3,12 +3,12 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc12e73e4b54fe043be89ed0087811d5, type: 3}
+  m_Script: {fileID: 1783217604, guid: 69c1c77f10b06f7428020bf5fd612607, type: 3}
   m_Name: Doodle Studio Preferences
   m_EditorClassIdentifier: 
   m_SaveFolder: Textures/Drawn
@@ -131,7 +131,7 @@ MonoBehaviour:
     - {r: 0.57254905, g: 0.4117647, b: 0.27058825, a: 1}
   m_SceneViewDrawing: 1
   m_ShowJumbleTool: 0
-  m_SoundRecorder: 1
+  m_SoundRecorder: 0
   m_CustomBrush: {fileID: 0}
   m_Compression: 0
   m_CustomPattern: {fileID: 0}
