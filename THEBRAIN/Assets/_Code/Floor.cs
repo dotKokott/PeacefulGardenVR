@@ -20,9 +20,7 @@ public class Floor : MonoBehaviour {
         if(other.tag == "Tracker") {           
             var obj = Instantiate(Manager._.Seeds[Random.Range(0, Manager._.Seeds.Length)]) as GameObject;            
             obj.transform.position = closestPoint;
-            obj.SetActive(true);
-
-            Manager._.PlayRandomSeed(obj.GetComponent<AudioSource>());
+            obj.SetActive(true);            
             //TODO find normal
         } else if(other.tag == "Controller") {
             var obj = Instantiate(Manager._.Grasses[Random.Range(0, Manager._.Grasses.Length)]) as GameObject;

@@ -123,6 +123,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18e14891b4cb1f6499af0fa4d7c027d6, type: 2}
   - {fileID: 11400000, guid: 77e42ab2a68e2a948a2ce032fa60ac51, type: 2}
   - {fileID: 11400000, guid: 34e91d31547471845ad16609b95e53f0, type: 2}
+  IsGrass: 1
 --- !u!114 &114634727319107336
 MonoBehaviour:
   m_ObjectHideFlags: 1

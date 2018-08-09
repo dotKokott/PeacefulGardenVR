@@ -148,6 +148,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 888e00ac2c3e96540817e0fb3315c88b, type: 2}
   - {fileID: 11400000, guid: f520d1f91490a314c977b46d3218f4bf, type: 2}
   - {fileID: 11400000, guid: 4e898c0a734a57544bf46c158eb23a70, type: 2}
+  IsGrass: 1
 --- !u!212 &212137376891321052
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -183,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 213834407997793968, guid: 7274b52d969eeee47ae4204e93552a70, type: 2}
+  m_Sprite: {fileID: 213061390000422218, guid: 7274b52d969eeee47ae4204e93552a70, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

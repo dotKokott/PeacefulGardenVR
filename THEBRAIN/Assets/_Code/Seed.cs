@@ -24,6 +24,8 @@ public class Seed : MonoBehaviour {
 
     private int season = 0;
 
+    public bool IsGrass = false;
+
 	void Start () {
         season = Random.Range(0, 4);        
 
@@ -35,7 +37,12 @@ public class Seed : MonoBehaviour {
 
         transform.parent.localScale *= newScale;
 
-        SetRotation();        
+        SetRotation();   
+        
+        if(!IsGrass) {
+            Manager._.PlayRandomSeed(audio);
+        }
+        
 	}
 
     public void SetRotation() {

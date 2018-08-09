@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VR;
 using UnityEngine.XR;
+using Valve.VR;
 
 public class Manager : MonoBehaviour {    
 
@@ -43,8 +44,10 @@ public class Manager : MonoBehaviour {
 	        XRSettings.eyeTextureResolutionScale = RenderScale;	
         
             Debug.Log("Setting Floor position");
-            Floor.position = new Vector3(Floor.position.x, FloorY, Floor.position.z);
+            //Floor.position = new Vector3(Floor.position.x, FloorY, Floor.position.z);
         }
+
+        Debug.Log(SetTronMode(false));
 	}
 	
 
@@ -64,8 +67,18 @@ public class Manager : MonoBehaviour {
         //Fallback
         hmd = Camera.main.transform;
     }
-	
-	void LateUpdate () {
+
+    bool tronMode = false;
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.T)) {
+            tronMode = !tronMode;
+            SetTronMode(tronMode);
+        }
+        //SetTronMode(true);
+    }
+
+    void LateUpdate () {
 		assignHMD();        
 
         var ray = new Ray(hmd.transform.position, hmd.transform.forward);        
@@ -84,6 +97,17 @@ public class Manager : MonoBehaviour {
         //    }
         //}
 	}    
+
+    EVRSettingsError SetTronMode(bool enable)
+    {
+        EVRSettingsError e = EVRSettingsError.None;
+        OpenVR.Settings.SetBool(OpenVR.k_pch_Camera_Section,
+                                OpenVR.k_pch_Camera_EnableCameraForCollisionBounds_Bool,
+                                enable,
+                                ref e);
+        OpenVR.Settings.Sync(true, ref e);
+        return e;
+    }
 
     public void PlayRandomSeed(AudioSource source) {
         source.PlayOneShot(SeedSounds[Random.Range(0, SeedSounds.Length)], 0.5f);
