@@ -35,9 +35,7 @@ public class Seed : MonoBehaviour {
 
         transform.parent.localScale *= newScale;
 
-        SetRotation();
-
-        Manager._.PlayRandomSeed(audio);
+        SetRotation();        
 	}
 
     public void SetRotation() {
@@ -46,13 +44,7 @@ public class Seed : MonoBehaviour {
          //transform.rotation = Quaternion.LookRotation(v);
          transform.Rotate(new Vector3(0, Random.Range(0, 180f), 0));
          //transform.RotateAround(Vector3.up, UnityEngine.Random.Range(0, 180f));
-    }
-	
-    
-
-	void Update () {    
-        IsInGaze = false;
-	}
+    }	  
 
     void LateUpdate() {
         if(Planted) return;
@@ -62,11 +54,11 @@ public class Seed : MonoBehaviour {
             StartCoroutine(PlayUntilFinishAndReplace());
         }
 
-        if((Input.GetKeyDown(KeyCode.P) || !IsInGaze) && !Paused && !Planted) {
-            Paused = true;
-            StopAllCoroutines();
-            doodleAnimator.Pause();
-        }        
+        //if((Input.GetKeyDown(KeyCode.P) || !IsInGaze) && !Paused && !Planted) {
+        //    Paused = true;
+        //    StopAllCoroutines();
+        //    doodleAnimator.Pause();
+        //}        
     }
 
     public IEnumerator PlayUntilFinishAndReplace() {
@@ -83,7 +75,6 @@ public class Seed : MonoBehaviour {
     }
 
     public void Plant() {
-        Debug.Log("Planted seed");
         Planted = true;
     }
 }
