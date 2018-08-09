@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GazeTracker))]
 public class Seed : MonoBehaviour {
 
-    private GazeTracker gazeTracker;
     private DoodleAnimator doodleAnimator;
 
     public bool Planted = false;
@@ -23,8 +21,6 @@ public class Seed : MonoBehaviour {
 
 	void Start () {
         audio = gameObject.AddComponent<AudioSource>();
-
-	    gazeTracker = GetComponent<GazeTracker>();
         doodleAnimator = GetComponent<DoodleAnimator>();
         
         var newScale = UnityEngine.Random.Range(minSize, maxSize);

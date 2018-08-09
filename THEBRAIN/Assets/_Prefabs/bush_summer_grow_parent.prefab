@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1776513367968144
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,7 +37,6 @@ GameObject:
   - component: {fileID: 212064477418130524}
   - component: {fileID: 114352728050323142}
   - component: {fileID: 114131260608115264}
-  - component: {fileID: 114231074688886966}
   - component: {fileID: 114251100889657636}
   - component: {fileID: 65292168203821238}
   m_Layer: 0
@@ -46,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4323120836215426
 Transform:
   m_ObjectHideFlags: 1
@@ -99,18 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castShadows: 1
   receiveShadows: 1
---- !u!114 &114231074688886966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1776513367968144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf201aa393dbcb244b3927c83c45fc56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsInGaze: 0
 --- !u!114 &114251100889657636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,8 +145,8 @@ SpriteRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1776513367968144}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -186,7 +173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 213028287861147730, guid: 33c6ec0e71c3e244491b51793fd9e926, type: 2}
+  m_Sprite: {fileID: 213690952250308744, guid: 33c6ec0e71c3e244491b51793fd9e926, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
