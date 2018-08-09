@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4323208065881532
 Transform:
   m_ObjectHideFlags: 1
@@ -125,6 +125,16 @@ MonoBehaviour:
   Paused: 1
   IdleAnimation: {fileID: 11400000, guid: 07ba867487a1d8d449a8bc8931353273, type: 2}
   IsInGaze: 0
+  GrowAnimations:
+  - {fileID: 11400000, guid: 2750966de2060714ab32e67671a196f1, type: 2}
+  - {fileID: 11400000, guid: 7e5c81211dbfb004fb402543a0b605b4, type: 2}
+  - {fileID: 11400000, guid: 7bebb1788bd026b47a69128a7bb4b97a, type: 2}
+  - {fileID: 11400000, guid: f1a33233090839d46ae79fa4420e20cb, type: 2}
+  IdleAnimations:
+  - {fileID: 11400000, guid: b2bc7dea6168d0f479732718f0342469, type: 2}
+  - {fileID: 11400000, guid: a39e34684114c904c9a8462af6e5cafe, type: 2}
+  - {fileID: 11400000, guid: 0c8860e9220f2f34b89bcd621594442e, type: 2}
+  - {fileID: 11400000, guid: 0d64766d129df4942be0bdc6585ced19, type: 2}
 --- !u!114 &114939592513754834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,8 +155,8 @@ SpriteRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872947564704722}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1

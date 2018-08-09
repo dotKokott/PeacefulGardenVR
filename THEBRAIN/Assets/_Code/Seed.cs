@@ -19,10 +19,18 @@ public class Seed : MonoBehaviour {
 
     public bool IsInGaze = false;
 
+    public DoodleAnimationFile[] GrowAnimations;
+    public DoodleAnimationFile[] IdleAnimations;
+
+    private int season = 0;
+
 	void Start () {
+        season = Random.Range(0, 4);        
+
         audio = gameObject.AddComponent<AudioSource>();
         doodleAnimator = GetComponent<DoodleAnimator>();
-        
+        doodleAnimator.ChangeAnimation(GrowAnimations[season]);
+
         var newScale = UnityEngine.Random.Range(minSize, maxSize);
 
         transform.parent.localScale *= newScale;
@@ -70,7 +78,7 @@ public class Seed : MonoBehaviour {
 
         GetComponent<Collider>().enabled = false;
 
-        doodleAnimator.ChangeAnimation(IdleAnimation);
+        doodleAnimator.ChangeAnimation(IdleAnimations[season]);
         doodleAnimator.Play();
     }
 

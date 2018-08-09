@@ -113,6 +113,16 @@ MonoBehaviour:
   Paused: 1
   IdleAnimation: {fileID: 11400000, guid: 9878f67c2dbe7744798e3b52a4d38e6e, type: 2}
   IsInGaze: 0
+  GrowAnimations:
+  - {fileID: 11400000, guid: 5b26eec0450947f40aa1cbd7c32a829c, type: 2}
+  - {fileID: 11400000, guid: b21c9ab962e745e409e56db4fc85606a, type: 2}
+  - {fileID: 11400000, guid: bf0a04541e4717241985fbbf3237a979, type: 2}
+  - {fileID: 11400000, guid: 5a230d6d91d84fb49b913d49814def85, type: 2}
+  IdleAnimations:
+  - {fileID: 11400000, guid: f59c50c65ca4f5a45a60146d9d281911, type: 2}
+  - {fileID: 11400000, guid: d0d428e682a7aae4e8202a5dd947c353, type: 2}
+  - {fileID: 11400000, guid: 9878f67c2dbe7744798e3b52a4d38e6e, type: 2}
+  - {fileID: 11400000, guid: 5c0b8ff753cdec0419ccebfcfa660995, type: 2}
 --- !u!114 &114566197444144986
 MonoBehaviour:
   m_ObjectHideFlags: 1
