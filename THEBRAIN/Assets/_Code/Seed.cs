@@ -17,11 +17,18 @@ public class Seed : MonoBehaviour {
     
     private AudioSource audio;
 
+    private float minSize = 0.3f;
+    private float maxSize = 1f;
+
 	void Start () {
         audio = gameObject.AddComponent<AudioSource>();
 
 	    gazeTracker = GetComponent<GazeTracker>();
         doodleAnimator = GetComponent<DoodleAnimator>();
+        
+        var newScale = UnityEngine.Random.Range(minSize, maxSize);
+
+        transform.parent.localScale *= newScale;
 
         LookAtCamera();
 

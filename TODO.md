@@ -1,6 +1,12 @@
-SEED
+* Spawn at random rotation maybe
+* Spawn at random sizes
+* Rotate to terrain normal
+
+SEED	
 	* Raycast ALL	
 	* Terrain placeable
+
+
 
 
 audio
