@@ -84,7 +84,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.68, y: 3.09, z: 0.73}
+  m_Size: {x: 2.36, y: 5.12, z: 1.39}
   m_Center: {x: 0.1, y: -0.42, z: 0}
 --- !u!114 &114201299841477716
 MonoBehaviour:
@@ -113,6 +113,7 @@ MonoBehaviour:
   Planted: 0
   Paused: 1
   IdleAnimation: {fileID: 11400000, guid: 54b3931e261a7e64098058df04f47e6c, type: 2}
+  IsInGaze: 0
 --- !u!114 &114544707744007260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,7 +186,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 213667711178798170, guid: bf0a04541e4717241985fbbf3237a979, type: 2}
+  m_Sprite: {fileID: 213933621333806194, guid: bf0a04541e4717241985fbbf3237a979, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

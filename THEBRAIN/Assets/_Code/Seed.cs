@@ -19,6 +19,8 @@ public class Seed : MonoBehaviour {
     private float minSize = 0.3f;
     private float maxSize = 1f;
 
+    public bool IsInGaze = false;
+
 	void Start () {
         audio = gameObject.AddComponent<AudioSource>();
 
@@ -45,19 +47,23 @@ public class Seed : MonoBehaviour {
     
 
 	void Update () {    
+        IsInGaze = false;
+	}
+
+    void LateUpdate() {
         if(Planted) return;
 
-        if((Input.GetKeyDown(KeyCode.Space) || gazeTracker.IsInGaze) && Paused && !Planted) {
+        if((Input.GetKeyDown(KeyCode.Space) || IsInGaze) && Paused && !Planted) {
             Paused = false;
             StartCoroutine(PlayUntilFinishAndReplace());
         }
 
-        if((Input.GetKeyDown(KeyCode.P) || !gazeTracker.IsInGaze) && !Paused && !Planted) {
+        if((Input.GetKeyDown(KeyCode.P) || !IsInGaze) && !Paused && !Planted) {
             Paused = true;
             StopAllCoroutines();
             doodleAnimator.Pause();
-        }
-	}
+        }        
+    }
 
     public IEnumerator PlayUntilFinishAndReplace() {
         Manager._.PlayRandomGrow(audio);

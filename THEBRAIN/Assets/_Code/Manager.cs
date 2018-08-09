@@ -65,25 +65,25 @@ public class Manager : MonoBehaviour {
         hmd = Camera.main.transform;
     }
 	
-	void Update () {
-		assignHMD();
+	void LateUpdate () {
+		assignHMD();        
 
-        //var ray = new Ray(hmd.transform.position, hmd.transform.forward);        
+        var ray = new Ray(hmd.transform.position, hmd.transform.forward);        
 
-        //var all = Physics.RaycastAll(ray, float.MaxValue);
+        var all = Physics.RaycastAll(ray, float.MaxValue);
 
-        //foreach(var hit in all) {
-        //    if(hit.collider.tag == "Flower") {
-        //        hit.collider.GetComponent<Seed>().
-        //    }
-        //}
+        foreach(var hit in all) {
+            if(hit.collider.tag == "Flower") {
+                hit.collider.GetComponent<Seed>().IsInGaze = true;
+            }
+        }
 
         //if(Physics.Raycast(ray, out hit, float.MaxValue)) {
         //    if(hit.collider.gameObject == this.gameObject) {
         //        IsInGaze = true;
         //    }
         //}
-	}
+	}    
 
     public void PlayRandomSeed(AudioSource source) {
         source.PlayOneShot(SeedSounds[Random.Range(0, SeedSounds.Length)]);

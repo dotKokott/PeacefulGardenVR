@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1972402313087284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.511, y: 0.41, z: 2.13}
-  m_LocalScale: {x: 0.26186, y: 0.26186, z: 0.26186}
+  m_LocalScale: {x: 0.12888683, y: 0.12888683, z: 0.12888683}
   m_Children:
   - {fileID: 4068847767686944}
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.82, y: 1.9, z: 0.73}
+  m_Size: {x: 2.46, y: 5.1, z: 2.12}
   m_Center: {x: -0.22, y: -0.41, z: 0}
 --- !u!114 &114268925330174570
 MonoBehaviour:
@@ -150,6 +150,7 @@ MonoBehaviour:
   Planted: 0
   Paused: 1
   IdleAnimation: {fileID: 11400000, guid: 432ef936a7f35a448b8878eac404d668, type: 2}
+  IsInGaze: 0
 --- !u!212 &212218862400921670
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -185,7 +186,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 213961873566320666, guid: 187f792ee676d2b4890a042111d85f3e, type: 2}
+  m_Sprite: {fileID: 213317369518023216, guid: 187f792ee676d2b4890a042111d85f3e, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
