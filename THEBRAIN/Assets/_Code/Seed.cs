@@ -1,5 +1,4 @@
 ﻿using DoodleStudio95;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,15 +29,17 @@ public class Seed : MonoBehaviour {
 
         transform.parent.localScale *= newScale;
 
-        LookAtCamera();
+        SetRotation();
 
         Manager._.PlayRandomSeed(audio);
 	}
 
-    public void LookAtCamera() {
-         var v = transform.position - Manager._.hmd.position;
-         v.y = 0;
-         transform.rotation = Quaternion.LookRotation(v);
+    public void SetRotation() {
+         //var v = transform.position - Manager._.hmd.position;
+         //v.y = 0;
+         //transform.rotation = Quaternion.LookRotation(v);
+         transform.Rotate(new Vector3(0, Random.Range(0, 180f), 0));
+         //transform.RotateAround(Vector3.up, UnityEngine.Random.Range(0, 180f));
     }
 	
     
