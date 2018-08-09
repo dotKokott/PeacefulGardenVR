@@ -15,12 +15,17 @@ public class Seed : MonoBehaviour {
 
     public DoodleAnimationFile IdleAnimation;
     
+    private AudioSource audio;
 
 	void Start () {
+        audio = gameObject.AddComponent<AudioSource>();
+
 	    gazeTracker = GetComponent<GazeTracker>();
         doodleAnimator = GetComponent<DoodleAnimator>();
 
         LookAtCamera();
+
+        Manager._.PlayRandomSeed(audio);
 	}
 
     public void LookAtCamera() {
@@ -35,13 +40,11 @@ public class Seed : MonoBehaviour {
         if(Planted) return;
 
         if((Input.GetKeyDown(KeyCode.Space) || gazeTracker.IsInGaze) && Paused && !Planted) {
-            Debug.Log("Grow");
             Paused = false;
             StartCoroutine(PlayUntilFinishAndReplace());
         }
 
         if((Input.GetKeyDown(KeyCode.P) || !gazeTracker.IsInGaze) && !Paused && !Planted) {
-            Debug.Log("Pause");
             Paused = true;
             StopAllCoroutines();
             doodleAnimator.Pause();
@@ -49,6 +52,8 @@ public class Seed : MonoBehaviour {
 	}
 
     public IEnumerator PlayUntilFinishAndReplace() {
+        Manager._.PlayRandomGrow(audio);
+
         yield return doodleAnimator.PlayAndPauseAt(doodleAnimator.CurrentFrame, doodleAnimator.File.Length - 1);
 
         Planted = true;

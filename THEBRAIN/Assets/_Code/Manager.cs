@@ -16,6 +16,7 @@ public class Manager : MonoBehaviour {
     public GameObject[] Trackers;
 
     public GameObject[] Seeds;
+    public GameObject[] Grasses;
     
     public AudioClip[] SeedSounds;
     public AudioClip[] GrowSounds;    
@@ -83,4 +84,12 @@ public class Manager : MonoBehaviour {
         //    }
         //}
 	}
+
+    public void PlayRandomSeed(AudioSource source) {
+        source.PlayOneShot(SeedSounds[Random.Range(0, SeedSounds.Length)]);
+    }
+
+    public void PlayRandomGrow(AudioSource source) {
+        source.PlayOneShot(GrowSounds[Random.Range(0, GrowSounds.Length)]);
+    }
 }

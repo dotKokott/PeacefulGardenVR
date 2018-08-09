@@ -15,9 +15,7 @@ public class Floor : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Tracker") {
-            other.GetComponent<TrackSeeder>().Timeout();
-
+        if(other.tag == "Tracker") {           
             var obj = Instantiate(Manager._.Seeds[Random.Range(0, Manager._.Seeds.Length)], this.transform) as GameObject;
             obj.transform.position = other.transform.position;
             //TODO find normal
@@ -26,7 +24,7 @@ public class Floor : MonoBehaviour {
 
     private void OnTriggerExit(Collider other) {
         if(other.tag == "Tracker") {
-            
+            other.GetComponent<TrackSeeder>().Timeout();
         }
     }
 }
