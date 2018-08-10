@@ -45,18 +45,20 @@ public class Seed : MonoBehaviour {
         
 	}
 
+    public void FaceCamera() {
+        var v = transform.position - Manager._.hmd.position;
+        v.y = 0;
+        transform.rotation = Quaternion.LookRotation(v);
+    }
+
     public void SetRotation() {
-         //var v = transform.position - Manager._.hmd.position;
-         //v.y = 0;
-         //transform.rotation = Quaternion.LookRotation(v);
          transform.Rotate(new Vector3(0, Random.Range(0, 180f), 0));
 
          if(IsGrass) {
              transform.Rotate(new Vector3(0, 0, Random.Range(-20, 20f)));
              transform.Rotate(new Vector3(Random.Range(-20, 20f), 0, 0));
 
-         }
-         //transform.RotateAround(Vector3.up, UnityEngine.Random.Range(0, 180f));
+         }         
     }	  
 
     void LateUpdate() {
