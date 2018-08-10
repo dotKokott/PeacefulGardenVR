@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_States: []
   m_File: {fileID: 11400000, guid: 7bebb1788bd026b47a69128a7bb4b97a, type: 2}
-  speed: 1
+  speed: 0.55
   m_Settings:
     randomizeOnStart: 0
     playOnStart: 0
@@ -135,6 +135,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a39e34684114c904c9a8462af6e5cafe, type: 2}
   - {fileID: 11400000, guid: 0c8860e9220f2f34b89bcd621594442e, type: 2}
   - {fileID: 11400000, guid: 0d64766d129df4942be0bdc6585ced19, type: 2}
+  IsGrass: 0
+  TimeToGrow: 4
 --- !u!114 &114939592513754834
 MonoBehaviour:
   m_ObjectHideFlags: 1

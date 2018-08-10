@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_States: []
   m_File: {fileID: 11400000, guid: d7d47aca272ccf047b7108b128366275, type: 2}
-  speed: 1
+  speed: 0.55
   m_Settings:
     randomizeOnStart: 0
     playOnStart: 0
@@ -148,6 +148,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8101833ee69ec94408cea3c09a576717, type: 2}
   - {fileID: 11400000, guid: 831b2d2eb90903246886a7d05e180cde, type: 2}
   - {fileID: 11400000, guid: f1ed9e3c9cfd79a47be748d923d234ca, type: 2}
+  IsGrass: 0
+  TimeToGrow: 3
 --- !u!212 &212639023647412028
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -183,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 213618676676301656, guid: d7d47aca272ccf047b7108b128366275, type: 2}
+  m_Sprite: {fileID: 213729954672346400, guid: d7d47aca272ccf047b7108b128366275, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

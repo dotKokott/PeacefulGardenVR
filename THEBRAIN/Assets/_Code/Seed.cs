@@ -26,6 +26,13 @@ public class Seed : MonoBehaviour {
 
     public bool IsGrass = false;
 
+    public float TimeToGrow = 4f;
+    private float grownTime = 0;
+
+    private float growScaleFactor = 0.05f;
+    private Vector3 originalScale;
+
+
 	void Start () {
         season = Random.Range(0, 4);        
 
@@ -33,9 +40,14 @@ public class Seed : MonoBehaviour {
         doodleAnimator = GetComponent<DoodleAnimator>();
         doodleAnimator.ChangeAnimation(GrowAnimations[season]);
 
+        doodleAnimator.SetFrame(0);
+
         var newScale = UnityEngine.Random.Range(minSize, maxSize);
 
         transform.parent.localScale *= newScale;
+        originalScale = transform.parent.localScale;        
+
+        //transform.parent.localScale = originalScale * GrowScaleFactor;
 
         SetRotation();   
         
@@ -59,21 +71,48 @@ public class Seed : MonoBehaviour {
              transform.Rotate(new Vector3(Random.Range(-20, 20f), 0, 0));
 
          }         
-    }	  
+    }
+
+    private void Update() {
+        IsInGaze = false;
+    }
 
     void LateUpdate() {
         if(Planted) return;
 
-        if((Input.GetKeyDown(KeyCode.Space) || IsInGaze) && Paused && !Planted) {
-            Paused = false;
-            StartCoroutine(PlayUntilFinishAndReplace());
+        if(Input.GetKey(KeyCode.Space) || IsInGaze) {
+            Grow();    
         }
 
-        //if((Input.GetKeyDown(KeyCode.P) || !IsInGaze) && !Paused && !Planted) {
+        //if ((Input.GetKeyDown(KeyCode.Space) || IsInGaze) && Paused && !Planted) {
+        //    Paused = false;
+        //    StartCoroutine(PlayUntilFinishAndReplace());
+        //}
+
+        //if ((Input.GetKeyDown(KeyCode.P) || !IsInGaze) && !Paused && !Planted) {
         //    Paused = true;
         //    StopAllCoroutines();
         //    doodleAnimator.Pause();
-        //}        
+        //}
+    }
+
+    public void Grow() {
+        grownTime += Time.deltaTime;
+
+        var currentFrame = Mathf.FloorToInt((doodleAnimator.File.Length / TimeToGrow) * grownTime);
+        doodleAnimator.SetFrame(currentFrame);
+
+        //var scale = (GrowScaleFactor / TimeToGrow) * grownTime;
+
+        transform.parent.localScale += new Vector3(growScaleFactor, growScaleFactor, growScaleFactor) * Time.deltaTime;
+
+        if(grownTime >= TimeToGrow) {
+            Planted = true;
+            GetComponent<Collider>().enabled = false;
+
+            doodleAnimator.ChangeAnimation(IdleAnimations[season]);
+            doodleAnimator.Play();
+        }
     }
 
     public IEnumerator PlayUntilFinishAndReplace() {
@@ -83,9 +122,7 @@ public class Seed : MonoBehaviour {
 
         yield return doodleAnimator.PlayAndPauseAt(doodleAnimator.CurrentFrame, doodleAnimator.File.Length - 1);
 
-        Planted = true;
-
-        GetComponent<Collider>().enabled = false;
+        Planted = true;        
 
         doodleAnimator.ChangeAnimation(IdleAnimations[season]);
         doodleAnimator.Play();
