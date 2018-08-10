@@ -13,17 +13,17 @@ public class TrackSeeder : MonoBehaviour {
         col = GetComponent<Collider>();		
 	}
 	
-    public void Timeout() {        
-        StartCoroutine(timeout());
+    public void Timeout(float time = 0.3f) {        
+        StartCoroutine(timeout(time));
     }
 
-    private IEnumerator timeout() {
+    private IEnumerator timeout(float time = 0.3f) {
         if(!col.enabled) yield break;
 
         Debug.Log("tracker off: " + gameObject.name);
 
         col.enabled = false;
-        yield return new WaitForSeconds(timeoutTime);
+        yield return new WaitForSeconds(time);
         col.enabled = true;
 
         Debug.Log("tracker on: " + gameObject.name);

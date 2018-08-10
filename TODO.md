@@ -1,21 +1,23 @@
 
+* Different sounds for different controllers
+* Tweak particles
+	* Emissive?
+
+* Integrate new Terrain
 
 
 * Rotate to terrain normal
 
 
-
 SEED	
-	* Raycast ALL	
 	* Terrain placeable
 
 * slightly z rotate?
-* 
+* Leave trail marks in the sky
+
 
 audio
-
-seed -> planting
-
-bling -> growing
-
 chimes -> moving controller
+
+SLOOOOOW GROWING!!!"!
+
