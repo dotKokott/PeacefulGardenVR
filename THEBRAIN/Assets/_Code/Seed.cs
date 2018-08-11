@@ -35,8 +35,7 @@ public class Seed : MonoBehaviour {
 
 	void Start () {
         season = Random.Range(0, 4);        
-
-        audio = gameObject.AddComponent<AudioSource>();
+        
         doodleAnimator = GetComponent<DoodleAnimator>();
         doodleAnimator.ChangeAnimation(GrowAnimations[season]);
 
@@ -52,6 +51,7 @@ public class Seed : MonoBehaviour {
         SetRotation();   
         
         if(!IsGrass) {
+            audio = gameObject.AddComponent<AudioSource>();
             Manager._.PlayRandomSeed(audio);
         }
         
@@ -112,21 +112,23 @@ public class Seed : MonoBehaviour {
 
             doodleAnimator.ChangeAnimation(IdleAnimations[season]);
             doodleAnimator.Play();
+
+            enabled = false;
         }
     }
 
-    public IEnumerator PlayUntilFinishAndReplace() {
-        if(!IsGrass) {
-            Manager._.PlayRandomGrow(audio);
-        }        
+    //public IEnumerator PlayUntilFinishAndReplace() {
+    //    if(!IsGrass) {
+    //        Manager._.PlayRandomGrow(audio);
+    //    }        
 
-        yield return doodleAnimator.PlayAndPauseAt(doodleAnimator.CurrentFrame, doodleAnimator.File.Length - 1);
+    //    yield return doodleAnimator.PlayAndPauseAt(doodleAnimator.CurrentFrame, doodleAnimator.File.Length - 1);
 
-        Planted = true;        
+    //    Planted = true;        
 
-        doodleAnimator.ChangeAnimation(IdleAnimations[season]);
-        doodleAnimator.Play();
-    }
+    //    doodleAnimator.ChangeAnimation(IdleAnimations[season]);
+    //    doodleAnimator.Play();
+    //}
 
     public void Plant() {
         Planted = true;

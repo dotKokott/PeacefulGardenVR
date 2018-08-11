@@ -19,6 +19,9 @@ public class Manager : MonoBehaviour {
     public GameObject[] Seeds;
     public GameObject[] Grasses;
     
+    private AudioSource audioSource;
+    public AudioClip PlantingGrass;
+
     public AudioClip[] SeedSounds;
     public AudioClip[] GrowSounds;    
 
@@ -41,13 +44,15 @@ public class Manager : MonoBehaviour {
         if(instance == null) {
             instance = this;
 
-	        XRSettings.eyeTextureResolutionScale = RenderScale;	
-        
-            Debug.Log("Setting Floor position");
-            //Floor.position = new Vector3(Floor.position.x, FloorY, Floor.position.z);
-        }
+	        XRSettings.eyeTextureResolutionScale = RenderScale;	                   
+            SetTronMode(false);
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.clip = PlantingGrass;
+            audioSource.volume = 0;
 
-        Debug.Log(SetTronMode(false));
+            audioSource.Play();
+        }               
 	}
 	
 
@@ -70,12 +75,23 @@ public class Manager : MonoBehaviour {
 
     bool tronMode = false;
 
+    float grassSoundTime = 0f;
+
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.T)) {
-            tronMode = !tronMode;
-            SetTronMode(tronMode);
+        //if(Input.GetKeyDown(KeyCode.T)) {
+        //    tronMode = !tronMode;
+        //    SetTronMode(tronMode);
+        //}
+        
+        if(grassSoundTime > 0) {
+            grassSoundTime -= Time.deltaTime;
+
+            audioSource.volume = 1f;
+        } else {
+            audioSource.volume = 0;
         }
-        //SetTronMode(true);
+        
+
     }
 
     void LateUpdate () {
@@ -115,5 +131,13 @@ public class Manager : MonoBehaviour {
 
     public void PlayRandomGrow(AudioSource source) {
         source.PlayOneShot(GrowSounds[Random.Range(0, GrowSounds.Length)]);
+    }
+
+    public void PlayGrassSound() {
+        grassSoundTime = 0.5f;
+    }
+
+    public void StopGrassSound() {
+        grassSoundTime = 0f;
     }
 }

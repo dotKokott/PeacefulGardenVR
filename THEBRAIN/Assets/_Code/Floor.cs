@@ -24,6 +24,8 @@ public class Floor : MonoBehaviour {
             
             //other.GetComponent<TrackSeeder>().Timeout();
         } else if(other.tag == "Controller") {
+            Manager._.PlayGrassSound();
+
             var spread = 0.03f;
             for(var i = 0; i < 3; i++) {
                 var obj = Instantiate(Manager._.Grasses[Random.Range(0, Manager._.Grasses.Length)]) as GameObject;
@@ -36,11 +38,7 @@ public class Floor : MonoBehaviour {
                 obj.SetActive(true);                
             }
 
-            other.GetComponent<TrackSeeder>().Timeout(0.3f);
-
-
-
-            
+            other.GetComponent<TrackSeeder>().Timeout(0.3f);            
         }
     }
 
