@@ -1,23 +1,12 @@
+Idle Animation random start
 
-* Different sounds for different controllers
-* Tweak particles
-	* Emissive?
+* If samples > 10 then wind recording
 
-* Integrate new Terrain
+* Try out fireflies for trackers
 
+* Trails
+	-> Painting wind
 
-* Rotate to terrain normal
+* Paint stars into my sky
 
-
-SEED	
-	* Terrain placeable
-
-* slightly z rotate?
-* Leave trail marks in the sky
-
-
-audio
-chimes -> moving controller
-
-SLOOOOOW GROWING!!!"!
 
