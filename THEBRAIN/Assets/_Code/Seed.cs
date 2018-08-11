@@ -32,8 +32,16 @@ public class Seed : MonoBehaviour {
     private float growScaleFactor = 0.05f;
     private Vector3 originalScale;
 
+    private ParticleSystem growingEffect;
 
 	void Start () {
+        growingEffect = (Instantiate(Manager._.GrowingParticles) as GameObject).GetComponent<ParticleSystem>();
+        growingEffect.transform.position = transform.parent.position;
+        growingEffect.gameObject.SetActive(true);
+        growingEffect.Stop();
+
+
+
         season = Random.Range(0, 4);        
         
         doodleAnimator = GetComponent<DoodleAnimator>();
@@ -57,9 +65,6 @@ public class Seed : MonoBehaviour {
 
             audio.clip = Manager._.GrowSounds[Random.Range(0, Manager._.GrowSounds.Length)];
             audio.loop = true;
-            //audio.volume = 0;
-
-            //audio.Play();
         }
         
 	}
@@ -88,14 +93,23 @@ public class Seed : MonoBehaviour {
         if(Planted) return;
 
         if(Input.GetKey(KeyCode.Space) || IsInGaze) {
-            Grow();   
-            
-            if(!audio.isPlaying) {
-                audio.Play();
+            Grow();              
+
+            if(growingEffect && !growingEffect.isPlaying) {
+                growingEffect.Play();
             }
-            audio.volume = 1f;
+
+            if(!IsGrass) {
+                if(!audio.isPlaying) {
+                    audio.Play();
+                }
+                audio.volume = 1f;
+            }
+
         } else {
-            if(grownTime > 0) {
+            if(growingEffect && growingEffect.isPlaying) growingEffect.Stop();
+
+            if(!IsGrass && grownTime > 0) {
                 audio.volume = 0f;            
             }
             
@@ -125,14 +139,23 @@ public class Seed : MonoBehaviour {
 
         if(grownTime >= TimeToGrow) {
             Planted = true;
+            
+            if(growingEffect) growingEffect.Stop();
+            
+            Destroy(growingEffect, 5f);
+
             GetComponent<Collider>().enabled = false;
 
             doodleAnimator.ChangeAnimation(IdleAnimations[season]);
             doodleAnimator.Play();
 
-            audio.enabled = false;
+            if(audio) {
+                audio.enabled = false;
+            }
+            
 
             enabled = false;
+
         }
     }
 

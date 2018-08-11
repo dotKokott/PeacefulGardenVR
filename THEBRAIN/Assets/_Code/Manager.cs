@@ -9,8 +9,6 @@ public class Manager : MonoBehaviour {
 
 	public float RenderScale = 1f;
 
-    public float FloorY = 0.4f;
-
     public Transform Floor;
 
     public GameObject[] Controllers;
@@ -29,7 +27,7 @@ public class Manager : MonoBehaviour {
 
     public Transform hmd;
 
-
+    public GameObject GrowingParticles;
 
     private static Manager instance;
     public static Manager _ {
