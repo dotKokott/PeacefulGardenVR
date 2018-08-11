@@ -10,6 +10,6 @@ public class GrowingParticle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate(Vector3.forward, 100f * Time.deltaTime);
+		transform.Rotate(Vector3.forward, -50f * Time.deltaTime);
 	}
 }
