@@ -126,7 +126,7 @@ public class Manager : MonoBehaviour {
     }
 
     public void PlayRandomSeed(AudioSource source) {
-        source.PlayOneShot(SeedSounds[Random.Range(0, SeedSounds.Length)], 0.5f);
+        source.PlayOneShot(SeedSounds[Random.Range(0, SeedSounds.Length)], 1f);
     }
 
     public void PlayRandomGrow(AudioSource source) {

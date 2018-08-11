@@ -52,7 +52,14 @@ public class Seed : MonoBehaviour {
         
         if(!IsGrass) {
             audio = gameObject.AddComponent<AudioSource>();
+            audio.playOnAwake = false;
             Manager._.PlayRandomSeed(audio);
+
+            audio.clip = Manager._.GrowSounds[Random.Range(0, Manager._.GrowSounds.Length)];
+            audio.loop = true;
+            //audio.volume = 0;
+
+            //audio.Play();
         }
         
 	}
@@ -81,7 +88,17 @@ public class Seed : MonoBehaviour {
         if(Planted) return;
 
         if(Input.GetKey(KeyCode.Space) || IsInGaze) {
-            Grow();    
+            Grow();   
+            
+            if(!audio.isPlaying) {
+                audio.Play();
+            }
+            audio.volume = 1f;
+        } else {
+            if(grownTime > 0) {
+                audio.volume = 0f;            
+            }
+            
         }
 
         //if ((Input.GetKeyDown(KeyCode.Space) || IsInGaze) && Paused && !Planted) {
@@ -112,6 +129,8 @@ public class Seed : MonoBehaviour {
 
             doodleAnimator.ChangeAnimation(IdleAnimations[season]);
             doodleAnimator.Play();
+
+            audio.enabled = false;
 
             enabled = false;
         }
