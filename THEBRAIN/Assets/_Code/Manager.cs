@@ -133,7 +133,9 @@ public class Manager : MonoBehaviour {
         var path = WindRecorder.SAVE_PATH;
         foreach(var file in Directory.GetFiles(path)) {
             var wind = JsonUtility.FromJson<WindRecording>(File.ReadAllText(file));
-            FindObjectOfType<WindRecorder>().PlayRecording(wind);
+            if(wind != null) {
+                FindObjectOfType<WindRecorder>().PlayRecording(wind).SetToFinal();
+            }            
         }
     }
 }

@@ -142,7 +142,7 @@ public class Seed : MonoBehaviour {
             
             if(growingEffect) growingEffect.Stop();
             
-            Destroy(growingEffect, 5f);
+            Destroy(growingEffect.gameObject, 5f);
 
             GetComponent<Collider>().enabled = false;
 

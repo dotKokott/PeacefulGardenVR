@@ -61,7 +61,7 @@ public class WindRecorder : MonoBehaviour {
         }
 	}
 
-    public void PlayRecording(WindRecording windRecording) {
+    public WindPlayer PlayRecording(WindRecording windRecording) {
         var obj = Instantiate(this.gameObject);            
         obj.transform.position = windRecording.Samples[0];
             
@@ -69,6 +69,8 @@ public class WindRecorder : MonoBehaviour {
         var player = obj.AddComponent<WindPlayer>();              
         
         player.Play(windRecording);        
+
+        return player;
     }
 
     private WindRecording getCurrentRecording() {

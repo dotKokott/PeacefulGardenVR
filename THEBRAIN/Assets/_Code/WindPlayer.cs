@@ -19,6 +19,14 @@ public class WindPlayer : MonoBehaviour {
 
     private Vector3 offset = new Vector3();
 
+    const float MAX_Y = 17f;
+    const float DIE_TIME = 20f;     
+
+    public void SetToFinal() {
+        offset.y = MAX_Y;
+        playTimer = DIE_TIME;
+    }
+
 	void Start () {
         trail = GetComponent<TrailRenderer>();
 		trailTime = trail.time;
@@ -40,10 +48,7 @@ public class WindPlayer : MonoBehaviour {
                 PlaySamples = false;                
                 Invoke("RestartTrail", trail.time);                   
             }
-        }
-
-        const float DIE_TIME = 20f;
-        const float MAX_Y = 17f;
+        }   
 
         if(playTimer >= DIE_TIME && offset.y < MAX_Y ) {
             offset += Vector3.up * Time.deltaTime * 0.3f;            
