@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.VR;
 using UnityEngine.XR;
@@ -36,8 +37,6 @@ public class Manager : MonoBehaviour {
         }
     }
 
-
-
 	void Start () {
         if(instance == null) {
             instance = this;
@@ -50,6 +49,8 @@ public class Manager : MonoBehaviour {
             audioSource.volume = 0;
 
             audioSource.Play();
+
+            LoadAllWinds();
         }               
 	}
 	
@@ -75,12 +76,7 @@ public class Manager : MonoBehaviour {
 
     float grassSoundTime = 0f;
 
-    private void Update() {
-        //if(Input.GetKeyDown(KeyCode.T)) {
-        //    tronMode = !tronMode;
-        //    SetTronMode(tronMode);
-        //}
-        
+    private void Update() {        
         if(grassSoundTime > 0) {
             grassSoundTime -= Time.deltaTime;
 
@@ -104,12 +100,6 @@ public class Manager : MonoBehaviour {
                 hit.collider.GetComponent<Seed>().IsInGaze = true;
             }
         }
-
-        //if(Physics.Raycast(ray, out hit, float.MaxValue)) {
-        //    if(hit.collider.gameObject == this.gameObject) {
-        //        IsInGaze = true;
-        //    }
-        //}
 	}    
 
     EVRSettingsError SetTronMode(bool enable)
@@ -137,5 +127,13 @@ public class Manager : MonoBehaviour {
 
     public void StopGrassSound() {
         grassSoundTime = 0f;
+    }
+
+    public void LoadAllWinds() {
+        var path = WindRecorder.SAVE_PATH;
+        foreach(var file in Directory.GetFiles(path)) {
+            var wind = JsonUtility.FromJson<WindRecording>(File.ReadAllText(file));
+            FindObjectOfType<WindRecorder>().PlayRecording(wind);
+        }
     }
 }

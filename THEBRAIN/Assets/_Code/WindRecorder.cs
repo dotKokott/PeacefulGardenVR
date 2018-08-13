@@ -54,18 +54,22 @@ public class WindRecorder : MonoBehaviour {
             }
 
             recordingTimer = 0;
-
-            var obj = Instantiate(this.gameObject);            
-            obj.transform.position = samples[0];
-            
-            obj.GetComponent<WindRecorder>().enabled = false;
-            var player = obj.AddComponent<WindPlayer>();
-            var rec = getCurrentRecording();            
+            var rec = getCurrentRecording();
 
             SaveCurrentRecording(rec);
-            player.Play(rec);
+            PlayRecording(rec);
         }
 	}
+
+    public void PlayRecording(WindRecording windRecording) {
+        var obj = Instantiate(this.gameObject);            
+        obj.transform.position = windRecording.Samples[0];
+            
+        obj.GetComponent<WindRecorder>().enabled = false;
+        var player = obj.AddComponent<WindPlayer>();              
+        
+        player.Play(windRecording);        
+    }
 
     private WindRecording getCurrentRecording() {
         var recording = new WindRecording();
