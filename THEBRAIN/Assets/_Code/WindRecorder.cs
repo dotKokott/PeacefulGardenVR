@@ -32,7 +32,6 @@ public class WindRecorder : MonoBehaviour {
 		if (ViveInput.GetPressDown(HandRole, ControllerButton.TriggerTouch)) {
             recording = true;
             samples.Clear();
-            Debug.Log("Start recording");
         }
 
         if(recording) {
@@ -60,13 +59,10 @@ public class WindRecorder : MonoBehaviour {
             obj.transform.position = samples[0];
             
             obj.GetComponent<WindRecorder>().enabled = false;
-
             var player = obj.AddComponent<WindPlayer>();
+            var rec = getCurrentRecording();            
 
-            var rec = getCurrentRecording();
-            
             SaveCurrentRecording(rec);
-
             player.Play(rec);
         }
 	}
