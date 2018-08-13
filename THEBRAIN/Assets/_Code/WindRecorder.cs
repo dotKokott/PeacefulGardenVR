@@ -7,25 +7,19 @@ public class WindRecorder : MonoBehaviour {
 
     public float SampleTime = 0.01f;
 	private float sampleTimer = 0;
+    private float recordingTimer = 0;
 
     private List<Vector3> samples = new List<Vector3>();    
 
     private bool recording = false;
 
     public HandRole HandRole;
-
-    //private SteamVR_TrackedObject tracked;
-
-	void Start () {		
-        //tracked = GetComponentInParent<SteamVR_TrackedObject>();
+    
+	void Start () {		        
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {       
-        //if(tracked.index == SteamVR_TrackedObject.EIndex.None) return;
-
-        //Debug.Log(SteamVR_Controller.Input((int)tracked.index).GetTouchDown(SteamVR_Controller.ButtonMask.Trigger));
-
 		if (ViveInput.GetPressDown(HandRole, ControllerButton.TriggerTouch)) {
             recording = true;
             samples.Clear();
@@ -34,6 +28,7 @@ public class WindRecorder : MonoBehaviour {
 
         if(recording) {
             sampleTimer += Time.deltaTime;
+            recordingTimer += Time.deltaTime;
 
             if(sampleTimer >= SampleTime) {
                 sampleTimer = 0;
@@ -43,9 +38,22 @@ public class WindRecorder : MonoBehaviour {
         }
 
         if (ViveInput.GetPressUp(HandRole, ControllerButton.TriggerTouch)) {            
-            recording = false;
+            recording = false;            
+
+            if(recordingTimer < 0.5f) {
+                recordingTimer = 0;
+                return;
+            }
+
+            recordingTimer = 0;
+
+
+            //var parent_obj = new GameObject("WindParent").transform;
+            //parent_obj.gameObject.AddComponent<WindParent>();
+            //parent_obj.position = samples[0];
 
             var obj = Instantiate(this.gameObject);
+            //obj.transform.parent = parent_obj;
             obj.transform.position = samples[0];
             
             obj.GetComponent<WindRecorder>().enabled = false;

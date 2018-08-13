@@ -15,6 +15,9 @@ public class WindPlayer : MonoBehaviour {
 
     private TrailRenderer trail;
     private float trailTime = 1f;
+    private float playTimer = 0f;
+
+    private Vector3 offset = new Vector3();
 
 	void Start () {
         trail = GetComponent<TrailRenderer>();
@@ -25,12 +28,12 @@ public class WindPlayer : MonoBehaviour {
 	void Update () {
 		if(!PlaySamples || !trail.enabled || trail.time == 0) return;
         
-        
+        playTimer += Time.deltaTime;
         sampleTimer += Time.deltaTime;
         if(sampleTimer >= sampleRate) {
             sampleTimer = 0;
                         
-            transform.position = positions[currentSample];            
+            transform.position = positions[currentSample] + offset;            
 
             currentSample++;
             if(currentSample >= positions.Count) {
@@ -38,13 +41,20 @@ public class WindPlayer : MonoBehaviour {
                 Invoke("RestartTrail", trail.time);                   
             }
         }
+
+        const float DIE_TIME = 20f;
+        const float MAX_Y = 17f;
+
+        if(playTimer >= DIE_TIME && offset.y < MAX_Y ) {
+            offset += Vector3.up * Time.deltaTime * 0.3f;            
+        }
 	}
 
     public void RestartTrail() {
         trail.enabled = false;
 
         currentSample = 0;
-        transform.position = positions[currentSample];            
+        transform.position = positions[currentSample] + offset;            
 
         trail.Clear();
         trail.enabled = true;
