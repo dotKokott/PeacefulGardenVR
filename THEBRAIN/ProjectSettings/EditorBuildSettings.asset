@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/GardenVR.unity
+    guid: 870016e266533bd47838187c7e489ebe
+  m_configObjects: {}

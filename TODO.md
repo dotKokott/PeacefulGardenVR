@@ -1,12 +1,8 @@
-Idle Animation random start
-
-* If samples > 10 then wind recording
-
-* Try out fireflies for trackers
-
-* Trails
-	-> Painting wind
-
-* Paint stars into my sky
+* Old plants re-cycle
 
 
+* Plant Idle Animation random start
+* Save wind color also
+* Re-play wind
+
+* Plant on walls

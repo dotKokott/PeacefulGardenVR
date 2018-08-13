@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WindPlayer : MonoBehaviour {
 
-	private List<Vector3> positions = new List<Vector3>();
+	private WindRecording recording;
     private int currentSample = 0;
 
     private float sampleRate = 0;
@@ -33,10 +33,10 @@ public class WindPlayer : MonoBehaviour {
         if(sampleTimer >= sampleRate) {
             sampleTimer = 0;
                         
-            transform.position = positions[currentSample] + offset;            
+            transform.position = recording.Samples[currentSample] + offset;            
 
             currentSample++;
-            if(currentSample >= positions.Count) {
+            if(currentSample >= recording.Samples.Count) {
                 PlaySamples = false;                
                 Invoke("RestartTrail", trail.time);                   
             }
@@ -54,7 +54,7 @@ public class WindPlayer : MonoBehaviour {
         trail.enabled = false;
 
         currentSample = 0;
-        transform.position = positions[currentSample] + offset;            
+        transform.position = recording.Samples[currentSample] + offset;            
 
         trail.Clear();
         trail.enabled = true;
@@ -62,10 +62,10 @@ public class WindPlayer : MonoBehaviour {
         PlaySamples = true;
     }
 
-    public void Play(List<Vector3> samples, float rate) {
-       positions.AddRange(samples);
-       sampleRate = rate;
-       sampleTimer = sampleRate;
+    public void Play(WindRecording windRecording) {
+       recording = windRecording;    
+       sampleRate = windRecording.SampleTime;
+       sampleTimer = windRecording.SampleTime;
        currentSample = 0;
        PlaySamples = true;
     }
