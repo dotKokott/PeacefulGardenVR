@@ -151,8 +151,7 @@ public class Seed : MonoBehaviour {
 
             if(audio) {
                 audio.enabled = false;
-            }
-            
+            }            
 
             enabled = false;
 

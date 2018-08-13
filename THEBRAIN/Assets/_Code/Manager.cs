@@ -131,10 +131,13 @@ public class Manager : MonoBehaviour {
 
     public void LoadAllWinds() {
         var path = WindRecorder.SAVE_PATH;
+
+        var recorder = FindObjectOfType<WindRecorder>();
+
         foreach(var file in Directory.GetFiles(path)) {
             var wind = JsonUtility.FromJson<WindRecording>(File.ReadAllText(file));
             if(wind != null) {
-                FindObjectOfType<WindRecorder>().PlayRecording(wind).SetToFinal();
+                recorder.PlayRecording(wind).SetToFinal();
             }            
         }
     }
