@@ -6,6 +6,7 @@ using System.Threading;
 using UnityEngine;
 
 public class WindRecording {
+    public float TrailTime = 0;
     public float SampleTime;
     public List<Vector3> Samples;    
 }
@@ -24,7 +25,12 @@ public class WindRecorder : MonoBehaviour {
 
     public HandRole HandRole;
     
+    private TrailRenderer trail;
+    //private float originalTime;
+
 	void Start () {		        
+        trail = GetComponent<TrailRenderer>();
+        //originalTime = trail.time;
 	}
 	
 	
@@ -35,6 +41,8 @@ public class WindRecorder : MonoBehaviour {
         }
 
         if(recording) {
+            trail.time += Time.deltaTime;
+
             sampleTimer += Time.deltaTime;
             recordingTimer += Time.deltaTime;
 
@@ -47,7 +55,7 @@ public class WindRecorder : MonoBehaviour {
 
         if (ViveInput.GetPressUp(HandRole, ControllerButton.TriggerTouch)) {            
             recording = false;            
-
+            
             if(recordingTimer < 0.5f) {
                 recordingTimer = 0;
                 return;
@@ -55,11 +63,17 @@ public class WindRecorder : MonoBehaviour {
 
             recordingTimer = 0;
             var rec = getCurrentRecording();
-
+            
             SaveCurrentRecording(rec);
             PlayRecording(rec);
+
+            Invoke("ResetTrail", 1);
         }
 	}
+
+    public void ResetTrail() {
+        trail.time = 1;
+    }
 
     public WindPlayer PlayRecording(WindRecording windRecording) {
         var obj = Instantiate(this.gameObject);            
@@ -77,6 +91,7 @@ public class WindRecorder : MonoBehaviour {
         var recording = new WindRecording();
         recording.SampleTime = SampleTime;
         recording.Samples = new List<Vector3>(samples);
+        recording.TrailTime = trail.time;
 
         return recording;
     }

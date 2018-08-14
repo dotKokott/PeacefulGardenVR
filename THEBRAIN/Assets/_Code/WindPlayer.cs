@@ -71,6 +71,10 @@ public class WindPlayer : MonoBehaviour {
        recording = windRecording;    
        sampleRate = windRecording.SampleTime;
        sampleTimer = windRecording.SampleTime;
+
+       
+       GetComponent<TrailRenderer>().time = windRecording.TrailTime;
+        
        currentSample = 0;
        PlaySamples = true;
     }

@@ -1,8 +1,11 @@
-* Old plants re-cycle
+* Plants disappear
+	* Become stars
 
+* Plant on walls
 
 * Plant Idle Animation random start
 * Save wind color also
-* Re-play wind
 
-* Plant on walls
+
+
+* Optimize for writing
