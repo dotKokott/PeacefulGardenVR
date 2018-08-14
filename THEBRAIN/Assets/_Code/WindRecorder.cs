@@ -100,7 +100,7 @@ public class WindRecorder : MonoBehaviour {
         var pos = Random.onUnitSphere;
         pos.y = Mathf.Abs(pos.y);
 
-        const float HEMISPHERE_RADIUS = 8f;
+        const float HEMISPHERE_RADIUS = 6f;
 
         pos *= HEMISPHERE_RADIUS;
 

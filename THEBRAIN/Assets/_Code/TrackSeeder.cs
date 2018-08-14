@@ -9,8 +9,12 @@ public class TrackSeeder : MonoBehaviour {
 
     private Collider col;
 
+    private Vector3 previousPosition;
+
 	void Start () {
         col = GetComponent<Collider>();		
+
+        previousPosition = transform.position;
 	}
 	
     public void Timeout(float time = 0.3f) {        
@@ -25,8 +29,10 @@ public class TrackSeeder : MonoBehaviour {
         col.enabled = true;
     }
 
+    public bool Moved = false;
+
 	// Update is called once per frame
 	void Update () {
-		
+ 
 	}
 }

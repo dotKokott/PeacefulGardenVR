@@ -69,8 +69,11 @@ public class Seed : MonoBehaviour {
 
             audio.clip = Manager._.GrowSounds[Random.Range(0, Manager._.GrowSounds.Length)];
             audio.loop = true;
+
+            //audio.volume = 0;
         }
         
+        Invoke("DestroyThePlant", 5 * 60);
 	}
 
     public void FaceCamera() {
@@ -107,7 +110,7 @@ public class Seed : MonoBehaviour {
                 if(!audio.isPlaying) {
                     audio.Play();
                 }
-                audio.volume = 1f;
+                audio.volume = 0.7f;
             }
 
         } else {
@@ -115,8 +118,7 @@ public class Seed : MonoBehaviour {
 
             if(!IsGrass && grownTime > 0) {
                 audio.volume = 0f;            
-            }
-            
+            }            
         }
 
         //if ((Input.GetKeyDown(KeyCode.Space) || IsInGaze) && Paused && !Planted) {
@@ -177,5 +179,10 @@ public class Seed : MonoBehaviour {
 
     public void Plant() {
         Planted = true;
+    }
+
+    public void DestroyThePlant() {
+        StopAllCoroutines();
+        Destroy(this.gameObject);
     }
 }

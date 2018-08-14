@@ -24,6 +24,8 @@ public class Floor : MonoBehaviour {
             
             //other.GetComponent<TrackSeeder>().Timeout();
         } else if(other.tag == "Controller") {
+            //if(!other.GetComponent<TrackSeeder>().Moved) return;
+
             Manager._.PlayGrassSound();
 
             var spread = 0.03f;

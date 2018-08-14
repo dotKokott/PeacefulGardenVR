@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1827148040639972
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be79ad58bdb8d274faa2299371f667c6, type: 2}
   - {fileID: 11400000, guid: a07d95e2d6609c1408c1e8311bafdc67, type: 2}
   IsGrass: 1
-  TimeToGrow: 4
+  TimeToGrow: 2
 --- !u!114 &114533076376341092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,8 +157,8 @@ SpriteRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827148040639972}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 213754875811933372, guid: 5b445682185255b43901866194e9cb79, type: 2}
+  m_Sprite: {fileID: 213057045567651594, guid: 5b445682185255b43901866194e9cb79, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
