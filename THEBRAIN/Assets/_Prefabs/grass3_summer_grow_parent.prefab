@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1851533752048378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.339, y: 0.41, z: 2.13}
-  m_LocalScale: {x: 0.083159074, y: 0.083159074, z: 0.083159074}
+  m_LocalScale: {x: 0.057935264, y: 0.057935264, z: 0.057935264}
   m_Children:
   - {fileID: 4123501497284060}
   m_Father: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f520d1f91490a314c977b46d3218f4bf, type: 2}
   - {fileID: 11400000, guid: 4e898c0a734a57544bf46c158eb23a70, type: 2}
   IsGrass: 1
-  TimeToGrow: 1
+  TimeToGrow: 4
 --- !u!212 &212137376891321052
 SpriteRenderer:
   m_ObjectHideFlags: 1
