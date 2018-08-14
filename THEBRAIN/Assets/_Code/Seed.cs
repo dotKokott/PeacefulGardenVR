@@ -146,8 +146,8 @@ public class Seed : MonoBehaviour {
 
             GetComponent<Collider>().enabled = false;
 
-            doodleAnimator.ChangeAnimation(IdleAnimations[season]);
-            doodleAnimator.Play();
+            doodleAnimator.ChangeAnimation(IdleAnimations[season]);            
+            doodleAnimator.GoToAndPlay(Random.Range(0, doodleAnimator.File.Length));
 
             if(audio) {
                 audio.enabled = false;

@@ -6,10 +6,8 @@ public class WindPlayer : MonoBehaviour {
 
 	private WindRecording recording;
     private int currentSample = 0;
-
-    private float sampleRate = 0;
+    
     private float sampleTimer = 0;
-    private int direction = 1;
 
     public bool PlaySamples = false;
 
@@ -38,7 +36,7 @@ public class WindPlayer : MonoBehaviour {
         
         playTimer += Time.deltaTime;
         sampleTimer += Time.deltaTime;
-        if(sampleTimer >= sampleRate) {
+        if(sampleTimer >= recording.SampleTime) {
             sampleTimer = 0;
                         
             transform.position = recording.Samples[currentSample] + offset;            
@@ -51,7 +49,7 @@ public class WindPlayer : MonoBehaviour {
         }   
 
         if(playTimer >= DIE_TIME && offset.y < MAX_Y ) {
-            offset += Vector3.up * Time.deltaTime * 0.3f;            
+            offset += recording.Direction * Time.deltaTime * 0.3f;            
         }
 	}
 

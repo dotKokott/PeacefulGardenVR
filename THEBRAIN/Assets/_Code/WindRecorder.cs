@@ -7,8 +7,9 @@ using UnityEngine;
 
 public class WindRecording {
     public float TrailTime = 0;
-    public float SampleTime;
+    public float SampleTime = 0.01f;
     public List<Vector3> Samples;    
+    public Vector3 Direction = Vector3.up;
 }
 
 public class WindRecorder : MonoBehaviour {
@@ -26,7 +27,6 @@ public class WindRecorder : MonoBehaviour {
     public HandRole HandRole;
     
     private TrailRenderer trail;
-    //private float originalTime;
 
 	void Start () {		        
         trail = GetComponent<TrailRenderer>();
@@ -92,6 +92,7 @@ public class WindRecorder : MonoBehaviour {
         recording.SampleTime = SampleTime;
         recording.Samples = new List<Vector3>(samples);
         recording.TrailTime = trail.time;
+        recording.Direction = (Manager._.hmd.position - transform.position).normalized;
 
         return recording;
     }
