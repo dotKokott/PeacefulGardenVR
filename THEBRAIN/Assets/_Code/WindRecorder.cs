@@ -9,7 +9,8 @@ public class WindRecording {
     public float TrailTime = 0;
     public float SampleTime = 0.01f;
     public List<Vector3> Samples;    
-    public Vector3 Direction = Vector3.up;
+    public Vector3 HemispherePosition;
+    public Vector3 Origin;
 }
 
 public class WindRecorder : MonoBehaviour {
@@ -92,7 +93,18 @@ public class WindRecorder : MonoBehaviour {
         recording.SampleTime = SampleTime;
         recording.Samples = new List<Vector3>(samples);
         recording.TrailTime = trail.time;
-        recording.Direction = (Manager._.hmd.position - transform.position).normalized;
+
+        recording.Origin = transform.position;
+
+
+        var pos = Random.onUnitSphere;
+        pos.y = Mathf.Abs(pos.y);
+
+        const float HEMISPHERE_RADIUS = 8f;
+
+        pos *= HEMISPHERE_RADIUS;
+
+        recording.HemispherePosition = pos;
 
         return recording;
     }

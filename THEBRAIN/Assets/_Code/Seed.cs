@@ -49,6 +49,10 @@ public class Seed : MonoBehaviour {
 
         doodleAnimator.SetFrame(0);
 
+        if(IsGrass) {
+            maxSize = 0.5f;
+        }
+
         var newScale = UnityEngine.Random.Range(minSize, maxSize);
 
         transform.parent.localScale *= newScale;

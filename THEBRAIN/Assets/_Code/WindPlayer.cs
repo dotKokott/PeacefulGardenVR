@@ -16,12 +16,12 @@ public class WindPlayer : MonoBehaviour {
     private float playTimer = 0f;
 
     private Vector3 offset = new Vector3();
+    private Vector3 direction = Vector3.zero;
 
-    const float MAX_Y = 17f;
     const float DIE_TIME = 20f;     
 
     public void SetToFinal() {
-        offset.y = MAX_Y;
+        offset = (recording.HemispherePosition);
         playTimer = DIE_TIME;
     }
 
@@ -30,6 +30,8 @@ public class WindPlayer : MonoBehaviour {
 		trailTime = trail.time;
 	}
 	
+    
+    bool stopTravelling = false;
 	// Update is called once per frame
 	void Update () {
 		if(!PlaySamples || !trail.enabled || trail.time == 0) return;
@@ -47,9 +49,13 @@ public class WindPlayer : MonoBehaviour {
                 Invoke("RestartTrail", trail.time);                   
             }
         }   
-
-        if(playTimer >= DIE_TIME && offset.y < MAX_Y ) {
-            offset += recording.Direction * Time.deltaTime * 0.3f;            
+                
+        if(playTimer >= DIE_TIME && !stopTravelling ) {            
+            offset += direction * Time.deltaTime * 0.3f;            
+            var dist = (recording.HemispherePosition - transform.position).sqrMagnitude;
+            if(dist < 0.5f) {
+                stopTravelling = true;
+            }
         }
 	}
 
@@ -66,11 +72,11 @@ public class WindPlayer : MonoBehaviour {
     }
 
     public void Play(WindRecording windRecording) {
-       recording = windRecording;    
-       sampleRate = windRecording.SampleTime;
+       recording = windRecording;           
        sampleTimer = windRecording.SampleTime;
-
        
+       direction = (windRecording.HemispherePosition - windRecording.Origin).normalized;
+
        GetComponent<TrailRenderer>().time = windRecording.TrailTime;
         
        currentSample = 0;
